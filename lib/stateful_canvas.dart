@@ -1,6 +1,5 @@
 import 'package:canvas_play/pointer_gesture.dart';
 import 'package:flutter_web/material.dart';
-import 'dart:core';
 import 'painter.dart';
 
 class StatefulCanvas extends StatefulWidget {
