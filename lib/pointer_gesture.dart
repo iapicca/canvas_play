@@ -18,6 +18,4 @@ class PointerGesture{
       if( _points.length > 20 ) _points.removeAt( 0 );
     }
   }
-
-  void forEach(MapOffset mapper)=> _points.forEach(mapper);
 }

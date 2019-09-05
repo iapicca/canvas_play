@@ -1,7 +1,7 @@
 import 'package:canvas_play/pointer_gesture.dart';
-import 'package:canvas_play/points_painter.dart';
 import 'package:flutter_web/material.dart';
 import 'dart:core';
+import 'painter.dart';
 
 class StatefulCanvas extends StatefulWidget {
   @override
@@ -9,7 +9,7 @@ class StatefulCanvas extends StatefulWidget {
 }
 
 class _StatefulCanvasState extends State<StatefulCanvas> {
-  Map<int,PointerGesture> _gestures = {};
+  final Map<int,PointerGesture> _gestures = {};
 
   void _addPoint({final PointerType type, final PointerEvent event}){
     PointerGesture _gesture;
@@ -17,16 +17,6 @@ class _StatefulCanvasState extends State<StatefulCanvas> {
     if( type==PointerType.down) _gesture = PointerGesture(id: event.pointer);
     if(_gesture!=null) _gesture.addPoint(event.position);
     if( type==PointerType.down) _gestures[event.pointer] = _gesture;
-    setState((){});
-  }
-
-  @override
-    void initState() {
-      super.initState();
-    }
-
-  void _clearGestures() {
-    _gestures.clear();
     setState((){});
   }
 
@@ -51,9 +41,9 @@ class _StatefulCanvasState extends State<StatefulCanvas> {
         child: Container()
       ),
     ),
-    floatingActionButton: IconButton(
-      highlightColor: Colors.blue,
-      icon: Icon(Icons.clear),
-      onPressed:()=>_clearGestures()),
+    floatingActionButton: FloatingActionButton(
+      child: Container(),
+      onPressed:()=> setState(()=>  _gestures.clear())
+    ),
   );
 }
