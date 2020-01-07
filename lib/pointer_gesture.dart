@@ -1,13 +1,12 @@
 import 'package:flutter_web_ui/ui.dart';
 
-typedef MapOffset = void Function(Offset offset);
 enum PointerType{down,move,up,cancel}
 
 class PointerGesture{
   final int id;
   PointerGesture({this.id});
 
-  List<Offset> _points = [];
+  final List<Offset> _points = [];
   List<Offset> get points => _points;
 
   void addPoint(Offset point){
